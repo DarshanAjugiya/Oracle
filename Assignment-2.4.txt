@@ -11,12 +11,12 @@ create table Client_Master_25
   Baldue Number(10,2),
   Constraint Chk_Client_25 Check(Clientno Like'C%'));
 
-Insert Into Client_Master_25 Values ('C00001','Rakesh Joshi','','','Bhavnagar',364001,'Gujarat',' 15000.00');
+Insert Into Client_Master_25 Values ('C00001','Rakesh Joshi','','','Mumbai',400054,'Maharashtra',' 15000.00');
 Insert Into Client_Master_25 Values ('C00002','Mayur Patel ','','','Madras',780001,'Tamilnadu','0.00');
-Insert Into Client_Master_25 Values ('C00003','Ishita Mehata','','','Malad',400054,'Mumbai','5000.00');
-Insert Into Client_Master_25 Values ('C00004','Amit Solanki','','','Amreli',365601,'Gujarat','0.00');
-Insert Into Client_Master_25 Values ('C00005','Hiren Pandya ','','','Mangalore',560050,'Karnataka','2000.00');
-Insert Into Client_Master_25 Values ('C00006','Dipak Sharma','','','Andheri',365601,'Maharashtra','0.00');
+Insert Into Client_Master_25 Values ('C00003','Ishita Mehata','','','Mumbai',400054,'Maharashtra','5000.00');
+Insert Into Client_Master_25 Values ('C00004','Amit Solanki','','','Bangalore',560001,'Karnataka','0.00');
+Insert Into Client_Master_25 Values ('C00005','Hiren Pandya ','','','Mumbai',400060,'Maharashtra','2000.00');
+Insert Into Client_Master_25 Values ('C00006','Dipak Sharma','','','Manglore',560050,'Karnataka','0.00');
 
 select *from  Client_Master_25
 
@@ -127,3 +127,4 @@ Insert Into Sales_Order_Details_25 Values ('O19008', 'P00001', '10', '5', '525')
 Insert Into Sales_Order_Details_25 Values ('O19008', 'P07975', '5', '3', '1050');
 
 select *from Sales_Order_Details_25
+
