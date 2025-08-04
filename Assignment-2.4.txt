@@ -1,0 +1,129 @@
+  [1] CLIENT_MASTER_25:
+
+create table Client_Master_25 
+ (ClientNo Varchar2 (6)Primary Key,
+  Name Varchar2(20)Not Null,
+  Adderss1 Varchar2(30),
+  Adderss2 Varchar2(30),
+  City Varchar2(15),
+  Pincode NUMBER(6),
+  State Varchar2(15),
+  Baldue Number(10,2),
+  Constraint Chk_Client_25 Check(Clientno Like'C%'));
+
+Insert Into Client_Master_25 Values ('C00001','Rakesh Joshi','','','Bhavnagar',364001,'Gujarat',' 15000.00');
+Insert Into Client_Master_25 Values ('C00002','Mayur Patel ','','','Madras',780001,'Tamilnadu','0.00');
+Insert Into Client_Master_25 Values ('C00003','Ishita Mehata','','','Malad',400054,'Mumbai','5000.00');
+Insert Into Client_Master_25 Values ('C00004','Amit Solanki','','','Amreli',365601,'Gujarat','0.00');
+Insert Into Client_Master_25 Values ('C00005','Hiren Pandya ','','','Mangalore',560050,'Karnataka','2000.00');
+Insert Into Client_Master_25 Values ('C00006','Dipak Sharma','','','Andheri',365601,'Maharashtra','0.00');
+
+select *from  Client_Master_25
+
+
+  [2]PRODUCT_MASTER_25:
+
+create table Product_Master_25
+ (ProductNo Varchar2(6)Primary Key,
+  Description Varchar2(15)Not Null,
+  ProfitPercent Number(4,2)Not Null,
+  UnitMaster Varchar2(10)Not Null,
+  QtyonHand  Number (8)Not Null,
+  ReOrerlvl  Number(8)Not Null,
+  SellPrice  Number(8,2)Not Null,
+  CostPrice  Number(8,2)Not Null,
+  Constraint Chk_ProductNo Check(ProductNo Like 'P%'),
+  Constraint Chk_SellPrice check(SellPrice!=0),
+  Constraint Chk_CostPrice Check(CostPrice!=0));
+
+Insert Into Product_Master_25 Values ('P00001','T-Shirts',5.00,'Piece',200,50,350.00,250.00);
+Insert Into Product_Master_25 Values ('P0345','Shirts',6.00,'Piece',150,50,500.00,350.00);
+Insert Into Product_Master_25 Values ('P06734','Cotton Jeans',5.00,'Piece',100,20,600.00,450.00);
+Insert Into Product_Master_25 Values ('P07865','Jeans',5.00,'Piece',100,20,750.00,500.00);
+Insert Into Product_Master_25 Values ('P07868','Trousers',2.00,'Piece',150,50,850.00,550.00);
+Insert Into Product_Master_25 Values ('P07885','Pull Overs',2.50,'Piece',80,30,700.00,450.00);
+Insert Into Product_Master_25 Values ('P07965','Denim Shirts',4.00,'Piece',100,40,350.00,250.00);
+Insert Into Product_Master_25 Values ('P07975','Lycra Tops',5.00,'Piece',70,30,300.00,175.00);
+Insert Into Product_Master_25 Values ('P08865','Skirts',5.00,'Piece',75,30,450.00,300.00);
+
+select *from Product_Master_25
+
+
+  [3]SALESMAN_MASTER_25:
+
+create table Salesman_Master_25
+ (SalesmanNo Varchar(6)Primary Key,
+  SalesmanName Varchar(20)Not Null,
+  Address1 Varchar(30)Not Null,
+  Address2 Varchar(30),
+  City Varchar(20),
+  Pincode Number(8),
+  State Varchar(20),
+  Salamt Number(8,2)Not Null,
+  Tgttoget Number(6,2)Not Null,
+  Ytdsales Number(6,2)Not Null,
+  Remarks Varchar(60),
+  Constraint Chk_SalesmanNo Check(SalesmanNo Like 'S%'),
+  Constraint Chk_Salamt Check(Salamt!=0),
+  Constraint Chk_Tgttoget Check(Tgttoget!=0),
+  Constraint Chk_Ytdsales Check(Ytdsales!=0));
+
+Insert Into Salesman_Master_25 VALUES ('S00001', 'Aman', 'A/14',  'Vorli', 'Mumbai', 400002, 'Maharashtra', 3000.00, 100.00, 50.00, 'Good');
+Insert Into Salesman_Master_25 VALUES ('S00002', 'Omkar', '65', 'Nariman', 'Mumbai', 400001, 'Maharashtra', 3000.00, 200.00, 100.00, 'Good');
+Insert Into Salesman_Master_25 VALUES ('S00003', 'Raj', 'P-7', 'Bandra', 'Mumbai', 400032, 'Maharashtra', 3000.00, 200.00, 100.00, 'Good');
+Insert Into Salesman_Master_25 VALUES ('S00004', 'Ashish', 'A/5', 'Juhu', 'Mumbai', 400044, 'Maharashtra', 3000.00, 200.00, 100.00, 'Good');
+
+select *from Salesman_Master_25 
+
+
+ [4]SALES _ORDER_25:
+
+create table Sales_Order_25 
+ (OrderNo Varchar2(6) Primary Key,
+  ClinetNo Varchar2(6) References Client_Master_25,
+  OrderDate Date Not Null,
+  Delyaddr Varchar2(25),
+  SalesmanNO Varchar2(6) References Salesman_Master_25,
+  DelyType Char(1),
+  Billyn Char(1),
+  DelyDate Date,
+  OrderStatus Varchar2(10), 
+  Constraint Chk_OrderNo_25 Check (OrderNo Like 'O%'),
+  Constraint Chk_DelyType_25 Check (DelyType In ('P','F')),
+  Constraint Chk_DelyDate_25 Check (DelyDate > OrderDate),
+  Constraint Chk_OrderStatus_25 Check (OrderStatus In ('In Process','Fulfilled','Backorder','Cancelled')));
+
+Insert Into Sales_Order_25 Values ('O19001', 'C00001', '12-June-04','', 'S00001','F','N','20-July-04','In Process');
+Insert Into Sales_Order_25 Values ('O19002', 'C00002', '25-June-04','', 'S00002', 'P', 'N', '27-June-04', 'Cancelled');
+Insert Into Sales_Order_25 Values ('O46865', 'C00003', '18-Feb-04', '', 'S00003', 'F', 'Y', '20-Feb-04', 'Fulfilled');
+Insert Into Sales_Order_25 Values ('O19003', 'C00004', '03-Apr-04', '', 'S00001', 'F', 'Y', '07-Apr-02', 'Fulfilled');
+Insert Into Sales_Order_25 Values ('O46866', 'C00005', '20-May-04', '', 'S00002', 'P', 'N', '22-May-04', 'Cancelled');
+Insert Into Sales_Order_25 Values ('O19008', 'C00006', '24-May-04', '', 'S00004', 'F', 'N', '26-July-04', 'Fulfilled');
+
+Select *from Sales_Order_25
+
+ [5]SALES_ ORDER _DEATILS_23:
+
+create table Sales_Order_Details_25
+ (OrderNo Varchar(6) References Sales_Order_25,
+  productno Varchar(6) References Product_Master_25,
+  QtyOrdered Number(8),
+  QtyDisp Number(8),
+  ProductRate Number(10,2));
+
+Insert Into Sales_Order_Details_25 Values ('O19001', 'P00001', '4', '4', '525');
+Insert Into Sales_Order_Details_25 Values ('O19001', 'P07965', '2', '1', '8400');
+Insert Into Sales_Order_Details_25 Values ('O19001', 'P07885', '2', '1', '5250');
+Insert Into Sales_Order_Details_25 Values ('O19002', 'P00001', '10', '0', '525');
+Insert Into Sales_Order_Details_25 Values ('O46865', 'P07868', '3', '3', '3150');
+Insert Into Sales_Order_Details_25 Values ('O46865', 'P07885', '3', '1', '5250'); 
+Insert Into Sales_Order_Details_25 Values ('O46865', 'P00001', '10', '10', '525'); 
+Insert Into Sales_Order_Details_25 Values ('O46865', 'P0345', '4', '4', '1050');
+Insert Into Sales_Order_Details_25 Values ('O19003', 'P0345', '2', '2', '1050');
+Insert Into Sales_Order_Details_25 Values ('O19003', 'P06734', '1', '1', '12000');
+Insert Into Sales_Order_Details_25 Values ('O46866', 'P07965', '1', '0', '8400');
+Insert Into Sales_Order_Details_25 Values ('O46866', 'P07975', '1', '0', '1050');
+Insert Into Sales_Order_Details_25 Values ('O19008', 'P00001', '10', '5', '525');
+Insert Into Sales_Order_Details_25 Values ('O19008', 'P07975', '5', '3', '1050');
+
+select *from Sales_Order_Details_25
