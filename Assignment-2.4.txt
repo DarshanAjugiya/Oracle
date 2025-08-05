@@ -29,7 +29,7 @@ create table Product_Master_25
   ProfitPercent Number(4,2)Not Null,
   UnitMaster Varchar2(10)Not Null,
   QtyonHand  Number (8)Not Null,
-  Recoredlvl    Number(8)Not Null,
+  Recoredlvl  Number(8)Not Null,
   SellPrice  Number(8,2)Not Null,
   CostPrice  Number(8,2)Not Null,
   Constraint Chk_ProductNo Check(ProductNo Like 'P%'),
@@ -127,6 +127,7 @@ Insert Into Sales_Order_Details_25 Values ('O19008', 'P00001', '10', '5', '525')
 Insert Into Sales_Order_Details_25 Values ('O19008', 'P07975', '5', '3', '1050');
 
 select *from Sales_Order_Details_25
+
 
 
 
