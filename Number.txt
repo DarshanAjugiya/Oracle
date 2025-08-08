@@ -1,0 +1,10 @@
+Declare
+    Roll_No Constant Number(10):=121;
+    Mobile_No Constant Number(10):='1234567890';
+
+Begin
+    Dbms_Output.Put_Line(Roll_No);
+    Dbms_Output.Put_Line(Mobile_No);
+
+End;
+
