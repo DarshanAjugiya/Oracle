@@ -1,0 +1,27 @@
+Declare 
+    --Global Variables
+      Num1 Number:=95;
+      Num2 Number:=75;
+
+Begin
+     Dbms_Output.Put_Line('Outer Variable Num1:'||Num1);
+     Dbms_Output.Put_Line('Outer Variable Num2:'||Num2);
+
+Declare
+   --Local Variables
+      Num1 Number:=195;
+      Num2 Number:=555;
+
+Begin
+      Dbms_Output.Put_Line('Inner Variable Num1:'||Num1);
+      Dbms_Output.Put_Line('Inner Variable Num2:'||Num2);
+
+   End;
+End;
+
+Output
+
+Outer Variable Num1:95
+Outer Variable Num2:75
+Inner Variable Num1:195
+Inner Variable Num2:555

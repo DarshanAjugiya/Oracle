@@ -1,0 +1,9 @@
+Declare 
+    RollNo Constant Number(10);
+    MobileNo Constant Number(10);
+
+Begin
+    Dbms_Output.put_Line(:RollNo);
+    Dbms_Output.put_Line(:MobileNo);
+
+End;

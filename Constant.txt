@@ -1,0 +1,30 @@
+Declare 
+    --Constant Declaration
+      Pi Constant Number:=3.141592654;
+
+    --Other Declarations
+      Radius Number(5,2);
+      Dia Number(5,2);
+      Circumference Number(7,2);
+      Area Number(10,2);
+
+Begin
+     --Processing
+       Radius:=9.5;
+       Dia:=Radius*2;
+       Circumference:=2.0*Pi*Radius;
+       Area:=Pi*Radius*Radius;
+    -- Output
+
+       Dbms_Output.Put_Line('Radius:'||Radius);     
+       Dbms_Output.Put_Line('Diameter:'||Dia);     
+       Dbms_Output.Put_Line('Circumference:'||Circumference);     
+       Dbms_Output.Put_Line('Area:'||Area);     
+
+End; 
+
+Output
+     Radius:9.5
+     Diameter:19
+     Circumference:59.69
+     Area:283.53

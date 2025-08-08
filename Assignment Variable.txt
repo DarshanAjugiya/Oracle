@@ -1,0 +1,14 @@
+Declare
+    A Integer:=20;
+    B Integer:=30;
+    C Integer;
+    F Real;
+
+Begin
+    C:=A+B;
+    Dbms_Output.Put_Line('Value Of C:'||C);
+
+    F:=70.0/3.0;
+    Dbms_Output.Put_Line('Value Of F:'||F);
+
+End;
